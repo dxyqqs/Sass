@@ -1,3 +1,5 @@
+@import 'unit';
+
 $a:1;
 $b:2;
 x{
@@ -9,4 +11,52 @@ y{
 }
 z{
     p:$b;
+}
+
+.content .link{color:#f00}
+.content .para{color:#f00;font-size:1rem};
+
+.content{
+    .link{
+        color:#f00;
+    }
+    @at-root .para &{
+        color:#f00;
+        font-size: 1rem;
+    }
+}
+z{
+    p:4;
+}
+xxx{
+    @extend z;
+}
+z{
+    p:5;
+}
+
+
+@include query(desktop){
+    @at-root li{
+        width:100px;
+    }
+};
+
+$var:a,b,c,d,e,f,G;
+
+p{
+    @for $i from 1 through length($var){
+        _:nth($var,$i);
+    }
+}
+$addPrefix:webkit,ms;
+@import 'unit';
+a{
+    @include addPrefix(box-shadow,(0,0,10px,#f00))
+}
+
+a{
+    $addPrefix:webkit,ms,o;
+    @import 'unit';
+    @include addPrefix(box-shadow,(0,0,10px,#f00),1);
 }

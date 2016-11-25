@@ -1,0 +1,39 @@
+//针对屏幕和三种设备尺寸进行的媒体查询
+@mixin query($query:phone){
+    $device:'screen';
+    $phone:"#{$device} and (max-width:767px)";
+    $tablet:"#{$device} and (min-width:768px) and (max-width:991;)";
+    $desktop:"#{$device} and (min-width:992px)";
+    @if $query == phone{
+      @media #{$phone}{
+        @content;
+      } 
+
+    }@else if $query == tablet{
+        @media #{$tablet}{
+            @content;
+        } 
+    }@else{
+        @media #{$desktop}{
+            @content;
+        } 
+    }
+    
+}
+//为属性/属性值添加厂商前缀，
+//$type 1 为值添加前缀 其他值则为属性添加前缀
+$addPrefix:webkit,moz,ms,o !default;
+@mixin addPrefix($prop,$value,$type:0){
+    @if $type == 1{
+        #{$prop}:$value;
+        @for $i from 1 through length($addPrefix){
+            #{$prop}:-#{nth($addPrefix,$i)}-$value;
+        }
+    }@else{
+        #{$prop}:$value;
+        @for $i from 1 through length($addPrefix){
+            -#{nth($addPrefix,$i)}-#{$prop}:$value;
+        }
+    }
+    
+}
