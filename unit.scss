@@ -37,3 +37,19 @@ $addPrefix:webkit,moz,ms,o !default;
     }
     
 }
+//@font-face
+@mixin fontFace($name,$path){
+    @font-face {
+        font-family: $name;
+        src: url('#{$path}.eot');
+        src: url('#{$path}.eot?#iefix') format('embedded-opentype'),
+             url('#{$path}.woff') format('woff'),
+             url('#{$path}.ttf') format('truetype'),
+             url('#{$path}.svg#NeuesBauenDemo') format('svg');
+        @content
+    }
+
+
+}
+
+
