@@ -46,7 +46,7 @@ $addPrefix:webkit,moz,ms,o !default;
              url('#{$path}.woff') format('woff'),
              url('#{$path}.ttf') format('truetype'),
              url('#{$path}.svg#NeuesBauenDemo') format('svg');
-        @content
+        @content;
     }
 
 
