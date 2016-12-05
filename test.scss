@@ -43,7 +43,16 @@ B{
     q:1;
     @extend A;
 }
-@media (min-width:220px){
+$addPrefix:webkit,moz;
+@import "unit";
+a{
+    @include addPrefix(
+        "background-size","contain"
+    )
+}
+
+@import "unit";
+@include query{
     .page{
         a:1;
        
@@ -52,8 +61,9 @@ B{
         b:32;
     }
 
-
 }
+
+
 @import 'unit';
 $font-family:"myfount";
 @include fontFace($font-family,"/a/b/c"){
