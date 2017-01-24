@@ -1,68 +1,48 @@
-:root {
+html{
     body{
-        margin:{
-            left:0;
-            right:0;
-            top:0;
-            bottom:0;
+        @mixin base{
+            width:100px;
+            height: 100px;
+            background: #f00;
+            margin:0 auto 10px;
         }
-        a{
-            &:link{
-                color:#000;
-            }
-            &:visited{
-                color:#999;
-            }
-            &:hover{
-                color:#f00;
-            }
-            &:active{
-                color:#000;
-            }
-
+        .div3,
+        .div4,
+        .div5{
+            @include base;
         }
+        @at-root .div1{
+            @include base;
+        }
+        @at-root .div2{
+            @include base;
+        }
+        
     }
 }
 
-A{
-    p:1;
-}
-A>a>a1,
-A>a>a2,
-A>a>a3,
-A>a>a4{
-    p:2;
-}
-A:hover{
-    p:3
-}
-A>B{
-    p:4
-}
-B{
-    q:1;
-    @extend A;
-}
-$addPrefix:webkit,moz;
-@import "unit";
-a{
+
+
+.div1{
+    background:url(https://www.google.com/logos/doodles/2016/user-birthday-5656109189693440.2-scta.jpg) no-repeat 50%;
+    $addPrefix:webkit,moz;
+    @import "unit";
     @include addPrefix(
-        "background-size","contain"
+        background-size,contain
     )
 }
 
 @import "unit";
 @include query{
-    .page{
-        a:1;
+    .div1{
+        width:100%;
        
     }
-    @at-root (without:media) a {
-        b:32;
+    @at-root (without:media) .div2 {
+        background-color:#f0f;
     }
 
 }
-
 
 @import 'unit';
 $font-family:"myfount";
@@ -70,8 +50,12 @@ $font-family:"myfount";
     font-weight:normal;
     font-style: italic;
 }
-a{
 
+.test{
+   
     font-family:$font-family;
    
+}
+.div2{
+
 }
